@@ -1,2 +1,3 @@
 # cpp-chat-server
-just a quick implementation of sockets in cpp
+
+This is just a quick implementation of a multi-threaded chat server in C++
