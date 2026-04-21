@@ -10,9 +10,8 @@ namespace server {
 
 class server : private boost::noncopyable {
 public:
-  explicit server(const std::string &address, const std::string &port,
-                  const std::string &doc_root);
-
+  explicit server(boost::asio::ip::tcp::endpoint &endpoint,
+                  boost::asio::io_context &io_context);
   // run server's io_service loop
   void run();
 
