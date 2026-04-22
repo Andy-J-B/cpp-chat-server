@@ -17,8 +17,6 @@ server::server(boost::asio::ip::tcp::endpoint &endpoint,
 
 void start_accept() {}
 
-void start_accept();
-
 // handle completion of an async accept operation
 void handle_accept(const boost::system::error_code &e);
 

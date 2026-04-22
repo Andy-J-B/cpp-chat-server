@@ -30,15 +30,6 @@ private:
 
   // listen for incoming connections
   boost::asio::ip::tcp::acceptor acceptor_;
-
-  // connection_manager owns all live connections
-  // connection_manager connection_manager_;
-
-  // next connection to be acceptor
-  // connection_ptr new_connection_;
-
-  // handler for all incoming request
-  // request_handler request_handler_;
 };
 } // namespace server
 } // namespace http
