@@ -23,7 +23,7 @@ endif()
 
 find_package(Threads REQUIRED)
 
-find_package(Boost 1.89.0 REQUIRED CONFIG )
+find_package(Boost 1.83.0 REQUIRED CONFIG )
 
 add_executable(client src/client.cpp)
 add_executable(server src/server.cpp)
