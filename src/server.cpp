@@ -1,4 +1,5 @@
 #include "server.hpp"
+#include "tcp_connection.hpp"
 #include <boost/asio.hpp>
 #include <cstdlib>
 #include <iostream>
@@ -15,10 +16,22 @@ server::server(boost::asio::ip::tcp::endpoint &endpoint,
   start_accept();
 }
 
-void start_accept() {}
+void server::start_accept() {
+  tcp_connection::pointer new_connection = tcp_connection::create(io_context_);
+
+  acceptor_.async_accept(new_connection->socket(),
+                         std::bind(&server::handle_accept, this, new_connection,
+                                   boost::asio::placeholders::error));
+}
 
 // handle completion of an async accept operation
-void handle_accept(const boost::system::error_code &e);
+void server::handle_accept(tcp_connection::pointer new_connection,
+                           const boost::system::error_code &e) {
+  if (!e) {
+    new_connection->start();
+  }
+  start_accept();
+}
 
 // handle a request to stop server
 void handle_stop();

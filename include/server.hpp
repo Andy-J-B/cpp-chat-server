@@ -1,9 +1,9 @@
 #ifndef SERVER_HPP
 #define SERVER_HPP
 
+#include "tcp_connection.hpp"
 #include <boost/asio.hpp>
 #include <boost/noncopyable.hpp>
-#include <string.h>
 
 namespace http {
 namespace server {
@@ -20,7 +20,8 @@ private:
   void start_accept();
 
   // handle completion of an async accept operation
-  void handle_accept(const boost::system::error_code &e);
+  void handle_accept(tcp_connection::pointer new_connection,
+                     const boost::system::error_code &e);
 
   // handle a request to stop server
   void handle_stop();
