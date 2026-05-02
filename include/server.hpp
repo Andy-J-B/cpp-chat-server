@@ -27,7 +27,7 @@ private:
   void handle_stop();
 
   // the io_service used to perform async operation
-  boost::asio::io_context io_context_;
+  boost::asio::io_context &io_context_;
 
   // listen for incoming connections
   boost::asio::ip::tcp::acceptor acceptor_;

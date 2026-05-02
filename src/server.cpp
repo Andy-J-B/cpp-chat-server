@@ -11,7 +11,7 @@ namespace server {
 
 server::server(boost::asio::ip::tcp::endpoint &endpoint,
                boost::asio::io_context &io_context)
-    : io_context_(), acceptor_(io_context_, endpoint) {
+    : io_context_(io_context), acceptor_(io_context, endpoint) {
 
   start_accept();
 }

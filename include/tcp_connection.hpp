@@ -21,7 +21,7 @@ public:
 private:
   tcp_connection(boost::asio::io_context &io_context);
 
-  void handle_write(const boost::system::error_code &);
+  void handle_write(const boost::system::error_code &, size_t);
 
   boost::asio::ip::tcp::socket socket_;
   std::string message_;

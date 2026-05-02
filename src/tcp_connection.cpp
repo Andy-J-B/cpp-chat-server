@@ -34,7 +34,8 @@ tcp_connection::tcp_connection(boost::asio::io_context &io_context)
   // Empty
 }
 
-void handle_write(const boost::system::error_code &, size_t) {}
+void tcp_connection::handle_write(const boost::system::error_code &ec,
+                                  size_t bytes_transferred) {}
 
 } // namespace server
 } // namespace http

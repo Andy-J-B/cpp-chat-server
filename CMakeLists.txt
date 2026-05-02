@@ -26,7 +26,7 @@ find_package(Threads REQUIRED)
 find_package(Boost 1.83.0 REQUIRED CONFIG )
 
 add_executable(client src/client.cpp)
-add_executable(server src/server.cpp)
+add_executable(server src/server.cpp src/tcp_connection.cpp)
 
 target_include_directories(server PRIVATE include)
 target_include_directories(client PRIVATE include)
