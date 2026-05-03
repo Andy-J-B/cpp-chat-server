@@ -4,8 +4,8 @@
 #include <iostream>
 
 int main(int argc, char *argv[]) {
-  if (argc < 2) {
-    perror("Was expecting arguments <server host address>");
+  if (argc < 3) {
+    perror("Was expecting arguments <server host address> <port>");
     exit(EXIT_FAILURE);
   }
 
@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     // convert server name to tcp endpoint
     boost::asio::ip::tcp::resolver resolver(io_context);
     boost::asio::ip::tcp::resolver::results_type endpoints =
-        resolver.resolve(argv[1], "daytime");
+        resolver.resolve(argv[1], argv[2]);
 
     // try both ipv4 and ipv6
     boost::asio::ip::tcp::socket socket(io_context);
