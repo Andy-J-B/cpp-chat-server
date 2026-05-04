@@ -3,6 +3,8 @@
 #include <memory.h>
 #include <netinet/tcp.h>
 
+#define welcome_message "Welcome to the chat!\n"
+
 std::string make_daytime_string() {
   using namespace std;
   time_t now = time(0);
@@ -21,7 +23,8 @@ pointer tcp_connection::create(boost::asio::io_context &io_context) {
 boost::asio::ip::tcp::socket &tcp_connection::socket() { return socket_; }
 
 void tcp_connection::start() {
-  message_ = make_daytime_string();
+  // message_ = make_daytime_string();
+  message_ = welcome_message;
   boost::asio::async_write(
       socket_, boost::asio::buffer(message_),
       std::bind(&tcp_connection::handle_write, shared_from_this(),
